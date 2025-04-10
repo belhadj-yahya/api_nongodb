@@ -71,3 +71,22 @@ schoole> db.students.find({$or:[{age:{$gt:23}},{iq:{$gt:100}}]}) //  here at lis
 schoole> db.students.find({$nor:[{age:{$gt:23}},{iq:{$gt:100}}]}) //  here both of conditions need to be false
 schoole> db.students.find({age:{$not:{$gte:30}}}) // here we are saying gave me any documnts that has age not greater then or eaqul 30 what diffrents then just using $gte is that if age is null its will not be returned as will here its will be returned
 
+************** indexes mongoDB *****************
+ db.students.find({name:"yahya"}).explain("executionStats")
+to applay a index into a fild : this will make the select faster but will slow the insert and update
+db.(name of collection).createIndex({name:1})
+to see all indexes :
+db.(name of collection).getIndexes()
+to drop an index:
+db.(name of collection).dropIndex('name of that index')
+
+
+
+************** collections mongoDB *****************
+to see all collections:
+show collections
+advanced collections settings :
+db.createCollection("workers",{capped:true,size:100000000,max:100},{autoIndexId:false}) capped say if there will be a size for this collection if it true you have to gave a size , size of the collection, max document that can be in it, auto index id is to say if you want an index to be set on id or not
+to drop a collection : 
+db.(name of the collection).drop()
+
