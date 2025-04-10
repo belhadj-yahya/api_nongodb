@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "67f7995b10aca5750be458b6"
+  },
+  "name": "yahya",
+  "age": "20",
+  "iq": 5.2
+},
+{
+  "_id": {
+    "$oid": "67f7a13110aca5750be458b7"
+  },
+  "name": "sami",
+  "age": 27,
+  "iq": 138
+},
+{
+  "_id": {
+    "$oid": "67f7a13110aca5750be458b8"
+  },
+  "name": "brahim",
+  "age": 21,
+  "iq": 100
+},
+{
+  "_id": {
+    "$oid": "67f7a2b2e0b1a718b13dca41"
+  },
+  "name": "viego",
+  "age": 2000,
+  "iq": 180
+},
+{
+  "_id": {
+    "$oid": "67f7b0ed10aca5750be458b9"
+  },
+  "name": "mrakchi",
+  "age": 23,
+  "id": 120,
+  "test_filed": false
+}]

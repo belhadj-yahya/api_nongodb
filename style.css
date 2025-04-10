@@ -1,0 +1,19 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+form div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

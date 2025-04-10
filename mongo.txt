@@ -1,0 +1,73 @@
+BY THE WAY USING () IN THIS COURSE JUST FOR NAMES
+
+************** how to see databases and how to  use create and drop a database *****************
+show dbs // shows you all databases in your server
+use (name of data base) // to use a database and if you entered a new name its will create it but if you used after it show dbs itw will not be shown since its empty
+db.createCollection("(name of new collection)") // to create a new collection in your database if it done its will return {ok:1}
+db.dropDatabase() // this one is to drop the database that you are using currentliy if it was droped its will return { ok: 1, dropped: (name of database) }
+
+
+************** how to insurt a database *****************
+db.(name of the collection).insurtOne({key:"value",ket2:"value2"}) // here we are insurting into the database  if there is no such data base its will be created if query worked will get : {
+  acknowledged: true,
+  insertedId: ObjectId("67f7995b10aca5750be458b6")
+}
+ db.(name of the collection).find() //to return all documents in a collection
+ db.students.insertMany([{name:"sami",age:27,iq:138},{name:"brahim",age:21,iq:100}]) // for adding multipul documents
+
+
+
+
+************** data types in mongoDB *****************
+string : "ezjfnuez"
+int : 23
+dooble : 12.34
+boolen : true / false
+date : new date() // you can just use new date() and this will use the utc time zone or you can write it new date(2023-01-04)
+null : null //will be used when we dont know something
+arrays :  ["value1","value2"]
+nested documents : key:{key1:"value1"}
+
+************** SORTING AND LIMITING in mongoDB *****************
+db.(name of collection).find().sort({(name of what you want to sort with in this collection:1/-1)}) // to sort the documents if use 1 its will be like 1 2 3 or -1 its will be like 4 3 2 1 (its used for alphabit as will)
+db.(name of collection).find().limit(1) // number of limits that you want to get back
+you can use them both not nassasry one after another you can use limit().sort() or sort().limit()
+
+
+************** FIND() method in mongoDB *****************
+db.(name of collection).find({query like you will do name:"yahya" its will get you the document with the name of yahya},{projection (or what you want to get its like select in mysql set true for a key to get it and false to not get it)})
+
+************** update documents mongoDB *****************
+db.students.updateOne(filter what you are search with like {name:"yahya"},update {$set:{age:20}}) // here we are saying update document with name: yahya and eather add or set age: 20 if it there its will update if it not its will be created
+db.students.updateOne({name:"yahya"},{$unset:{id:""}}) // to remove a fild
+
+db.students.updateMany({},{$set:{useless:true}});
+db.students.updateMany({useless:{$exisists:false}},{$set:{useless:true}}) //here we are saying that if a useless fild doesnt exisists set it to be true
+
+
+
+
+************** how to delete documents mongoDB *****************
+db.(name of colection).deleteOne({name:"yahya"} this is used a filter to what we are going to delete like here we are delete documen with name = "yahya")
+in deleteMany we can delete documns that doesnt have a fild or even missing a fild by using the $exists
+
+
+
+************** coparison operators mongoDB *****************
+db.(name of collection).find({name:{$ne:"yahya"}}) :: find all documen with name not equel to yahya
+schoole> db.students.find({age:{$lt:20}}) :: find documen with age less then 20
+schoole> db.students.find({age:{$lte:20}}) :: find documen with age less then or equel to 20
+schoole> db.students.find({age:{$gt:20}}) :: find documen with age greater then 20
+schoole> db.students.find({age:{$gte:20}}) :: find documen with age greater then or eaqule to 20
+schoole> db.students.find({age:{$gte:20,$lte:27}}) :: find documen with age between 20 and 27
+db.(name of collection).find({name:{$in:["value1","value2"]}}) :: find documen with  name in this array
+db.(name of collection).find({name:{$nin:["value1","value2"]}}) :: find documen without name in this array
+
+
+************** Logical operators mongoDB *****************
+$and $not $nor $or
+schoole> db.students.find({$and:[{age:{$gt:23}},{iq:{$gt:100}}]}) //  here both conditions need to be true
+schoole> db.students.find({$or:[{age:{$gt:23}},{iq:{$gt:100}}]}) //  here at list one need to be true conditions need to be true
+schoole> db.students.find({$nor:[{age:{$gt:23}},{iq:{$gt:100}}]}) //  here both of conditions need to be false
+schoole> db.students.find({age:{$not:{$gte:30}}}) // here we are saying gave me any documnts that has age not greater then or eaqul 30 what diffrents then just using $gte is that if age is null its will not be returned as will here its will be returned
+
